@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 
 if __name__ == "__main__":
-    data_dir = Path(__file__).parent.parent / "data" / "voice-people"
+    data_dir = Path(__file__).parent.parent.parent / "data" / "voice-people"
 
     audio_files = list(data_dir.glob("*.wav")) + list(data_dir.glob("*.mp3"))
 
@@ -26,11 +26,11 @@ if __name__ == "__main__":
         if all_features:
             all_features_array = np.array(all_features, dtype=object)
 
-            output_path = Path(__file__).parent.parent / \
+            output_path = Path(__file__).parent.parent.parent / \
                 "data" / "voice-npy" / "mfccs.npy"
             np.save(output_path, all_features_array)
 
-            np.save(Path(__file__).parent.parent / "data" / "voice-npy" /
+            np.save(Path(__file__).parent.parent.parent / "data" / "voice-npy" /
                     "file_names.npy", np.array(file_names))
 
             print(f"\nTodos os MFCCs foram salvos em {output_path}")
