@@ -9,15 +9,8 @@ if __name__ == "__main__":
     load_dotenv()
 
     data_dir = Path(os.getenv("IMAGE_DATA_DIR"))
-    output_dir = Path(os.getenv("IMAGE_NPY_DIR"))
-
     if not data_dir or not data_dir.exists():
         raise ValueError("Variável ou pasta não existe")
-
-    if not output_dir:
-        raise ValueError("Variável não definida")
-
-    output_dir.mkdir(parents=True, exist_ok=True)
 
     image_files = list(data_dir.glob("*.jpg")) + list(data_dir.glob("*.png"))
 
