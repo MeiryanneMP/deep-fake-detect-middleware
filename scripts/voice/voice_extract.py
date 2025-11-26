@@ -1,9 +1,16 @@
 from extract_features import extract_mfcc
 from pathlib import Path
+from dotenv import load_dotenv
+import os
 import numpy as np
 
 if __name__ == "__main__":
-    data_dir = Path(__file__).parent.parent.parent / "data" / "voice-people"
+
+    load_dotenv()
+
+    data_dir = Path(os.getenv("VOICE_DATA_DIR"))
+    if not data_dir or not data_dir.exists():
+        raise ValueError("Variável ou pasta não existe")
 
     audio_files = list(data_dir.glob("*.wav")) + list(data_dir.glob("*.mp3"))
 
